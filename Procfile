@@ -1,1 +1,1 @@
-web: java com.Server.Program
+web: java -jar target/server.jar
