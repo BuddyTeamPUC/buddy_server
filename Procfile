@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar target/classes:target/dependency/* com.Server.Program
+web: java com.Server.Program
