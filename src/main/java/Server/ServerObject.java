@@ -13,6 +13,8 @@ import Server.Communication.Result.*;
 public class ServerObject {
 	int port;
 	
+	public static boolean isBuild = true;
+	
 	public ServerObject(int port) 
 	{
 		this.port = port;
@@ -41,7 +43,9 @@ public class ServerObject {
 						line = br.readLine();
 					}
 					
-					ProcessRequest(client, GetRequest(request.toString()));
+					//ProcessRequest(client, GetRequest(request.toString()));
+					
+					Write(client, new CommunicationResult(true, "end-here", "{ \"data\":\"testee\" }").GetJson());
 					
 					client.close();
 				}
@@ -59,7 +63,8 @@ public class ServerObject {
 	{
 		OutputStream clientOutput = client.getOutputStream();
 		clientOutput.write(("HTTP/1.1 200 OK\r\n").getBytes());
-		clientOutput.write(("Content-Type: text/json\r\n").getBytes());
+		clientOutput.write(("Content-Type: text/json; charset=utf-8\r\n").getBytes());
+		clientOutput.write(("Content-Length: " + data.getBytes().length + "\r\n").getBytes());
 		clientOutput.write(("Access-Control-Allow-Origin: *\r\n").getBytes());
 		clientOutput.write(("\r\n").getBytes());
 		clientOutput.write((data+"\r\n").getBytes());
