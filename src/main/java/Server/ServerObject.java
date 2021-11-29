@@ -124,7 +124,7 @@ public class ServerObject {
 		}
 		else 
 		{
-			System.out.println("Invalid request: " + request);
+			Write(client, "Buddy app - page not found");
 		}
 	}
 }
