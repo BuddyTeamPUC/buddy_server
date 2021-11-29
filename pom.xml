@@ -2,6 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>buddyserver</groupId>
   <artifactId>buddyserver</artifactId>
+  <properties>
+  	<java.version>8</java.version>
+  </properties>
   <version>0.0.1-SNAPSHOT</version>
   <name>buddy_server</name>
   <description>A server for buddy</description>

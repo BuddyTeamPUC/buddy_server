@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\Firehorse\Documents\Personal\Faculdade Codes\buddy_server"/>
 			<item value="C:\Users\Firehorse\Documents\Personal\Faculdade Codes\TI2 - Buddy\BuddyProject\buddyserver"/>
 		</list>
 		<list key="projectNameTemplate">
