@@ -1,1 +1,1 @@
-web: java -jar $JAVA_OPTS -Dserver.port=$PORT -cp target/classes:target/dependency/* target/buddyserver-0.0.1-SNAPSHOT
+web: java -jar $JAVA_OPTS -Dserver.port=$PORT -cp target/classes:target/dependency/* buddyserver-0.0.1-SNAPSHOT
