@@ -28,6 +28,8 @@ public class ServerObject {
 			
 			while(true) 
 			{
+				System.out.println("Server Running at port: " + port);
+				
 				try(Socket client = server.accept())
 				{
 					InputStreamReader isr = new InputStreamReader(client.getInputStream());
