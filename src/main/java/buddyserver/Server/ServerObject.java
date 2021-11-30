@@ -28,31 +28,42 @@ public class ServerObject {
 			
 			while(true) 
 			{
-				System.out.println("Server Running at port: " + port);
 				
-				try(Socket client = server.accept())
+				try 
 				{
-					InputStreamReader isr = new InputStreamReader(client.getInputStream());
 					
-					BufferedReader br = new BufferedReader(isr);
+					Thread.sleep(1000);
+					System.out.println("Server Running at port: " + port);
 					
-					StringBuilder request = new StringBuilder();
-					String line = br.readLine();
-					
-					while(!line.isBlank()) 
+					try(Socket client = server.accept())
 					{
-						request.append(line + "\r\n");
-						line = br.readLine();
+						InputStreamReader isr = new InputStreamReader(client.getInputStream());
+						
+						BufferedReader br = new BufferedReader(isr);
+						
+						StringBuilder request = new StringBuilder();
+						String line = br.readLine();
+						
+						while(!line.isBlank()) 
+						{
+							request.append(line + "\r\n");
+							line = br.readLine();
+						}
+						
+						//ProcessRequest(client, GetRequest(request.toString()));
+						
+						System.out.println("Receiving data: " + request.toString());
+						
+						Write(client, new CommunicationResult(true, "end-here", "{ \"data\":\"testee\" }").GetJson());
+						
+						client.close();
 					}
-					
-					//ProcessRequest(client, GetRequest(request.toString()));
-					
-					System.out.println("Receiving data: " + request.toString());
-					
-					Write(client, new CommunicationResult(true, "end-here", "{ \"data\":\"testee\" }").GetJson());
-					
-					client.close();
+					catch(Exception e)
+					{
+						System.out.println("Listenning for clients...");
+					}
 				}
+				catch(Exception e){}
 			}
 		}
 	}
