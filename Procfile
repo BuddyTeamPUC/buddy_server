@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* Program
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.buddyserver.Server.Program
