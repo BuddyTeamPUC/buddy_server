@@ -1,5 +1,8 @@
 package buddyserver.Server.Communication;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+
 import buddyserver.DB.ConnectionSettings;
 import buddyserver.DB.DAO;
 import buddyserver.DB.entities.Materiais_link;
@@ -15,8 +18,8 @@ public class CreateLinkRequest extends BaseRequest {
 		super(requestString);
 		String[] infoLines = requestString.split("\\?")[1].split("&");
 		this.assuntoId = Integer.parseInt(infoLines[0].split("=")[1].replace("%20", " "));
-		this.titulo = infoLines[1].split("=")[1].replace("%20", " ");
-		this.link = infoLines[2].split("=")[1].replace("%20", " ");
+		this.titulo =  URLDecoder.decode( infoLines[1].split("=")[1].replace("%20", " "), StandardCharsets.UTF_8);
+		this.link = URLDecoder.decode( infoLines[2].split("=")[1].replace("%20", " "), StandardCharsets.UTF_8);
 	}
 
 	public CommunicationResult ProcessRequest() {

@@ -13,7 +13,7 @@ import buddyserver.Server.Communication.Result.*;
 public class ServerObject {
 	int port;
 	
-	public static boolean isBuild = true;
+	public static boolean isBuild = false;
 	
 	public ServerObject(int port) 
 	{

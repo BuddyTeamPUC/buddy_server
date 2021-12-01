@@ -1,8 +1,10 @@
 package buddyserver.Server.Communication;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+
 import buddyserver.DB.ConnectionSettings;
 import buddyserver.DB.DAO;
-import buddyserver.DB.entities.Assunto;
 import buddyserver.DB.entities.Materia;
 import buddyserver.Server.Communication.Result.CommunicationResult;
 
@@ -21,6 +23,9 @@ public class CreateSubjectRequest extends BaseRequest {
 		this.user_id = Integer.parseInt(infoLines[0].split("=")[1].replace("%20", " "));
 		this.nome = infoLines[1].split("=")[1].replace("%20", " ");
 		this.descricao = infoLines[2].split("=")[1].replace("%20", " ");
+	
+		this.nome = URLDecoder.decode(this.nome, StandardCharsets.UTF_8);
+		this.descricao = URLDecoder.decode(this.descricao, StandardCharsets.UTF_8);
 	}
 	
 	public CommunicationResult ProcessRequest() 
