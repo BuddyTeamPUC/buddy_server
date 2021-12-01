@@ -52,8 +52,6 @@ public class ServerObject {
 						
 						ProcessRequest(client, GetRequest(request.toString()));
 						
-						System.out.println("Receiving data: " + request.toString());
-						
 						client.close();
 					}
 					catch(Exception e)
