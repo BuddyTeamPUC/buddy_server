@@ -11,6 +11,9 @@ public class CommunicationResult {
 		this.status = status;
 		this.message = message;
 		this.data = data;
+
+		System.out.println("Sending Result: ");
+		System.out.println(data);
 	}
 	
 	public boolean GetStatus() 
