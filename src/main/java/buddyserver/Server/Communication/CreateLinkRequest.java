@@ -24,7 +24,7 @@ public class CreateLinkRequest extends BaseRequest {
 		try {
 			dao.Start(ConnectionSettings.GetDefault());
 
-			Materiais_link[] assuntos = dao.GetAssuntosMaterial(assuntoId);
+			Materiais_link[] assuntos = dao.GetAssuntosMaterial();
 			int id = (assuntos != null && assuntos.length > 0) ? assuntos.length : 0;
 
 			Materiais_link newTopic = new Materiais_link(id, titulo, link, assuntoId);

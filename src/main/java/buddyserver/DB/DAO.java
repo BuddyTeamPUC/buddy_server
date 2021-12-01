@@ -222,6 +222,35 @@ public class DAO {
 		return links;
 	}
 	
+	public Materiais_link[] GetAssuntosMaterial()
+	{
+		Materiais_link[] links = null;
+		
+		try 
+		{
+			Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = st.executeQuery("SELECT * FROM materiais_link");
+			if(rs.next()) 
+			{
+				rs.last();
+				links = new Materiais_link[rs.getRow()];
+				rs.beforeFirst();
+				
+				for(int i = 0; rs.next(); i++) 
+				{
+					links[i] = new Materiais_link(rs.getInt("id"), rs.getString("nome"), rs.getString("links"), rs.getInt("assunto_id"));
+				}
+			}
+			System.out.println("Returnin with " + links.length + " datas...");
+			st.close();
+		}catch(Exception e) 
+		{
+			System.err.println(e.getMessage());
+		}
+		
+		return links;
+	}
+	
 	public Estudante GetEstudante(int id) 
 	{
 		Estudante estudante = null;
