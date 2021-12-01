@@ -9,7 +9,7 @@ public static void main(String[] args) {
 			System.out.println(args[i]);
 		}
 		
-		ServerObject server = new ServerObject(3000);
+		ServerObject server = new ServerObject(Integer.parseInt(args[0]));
 		try {
 			server.Run();
 		}
