@@ -50,11 +50,9 @@ public class ServerObject {
 							line = br.readLine();
 						}
 						
-						//ProcessRequest(client, GetRequest(request.toString()));
+						ProcessRequest(client, GetRequest(request.toString()));
 						
 						System.out.println("Receiving data: " + request.toString());
-						
-						Write(client, new CommunicationResult(true, "end-heere", "{ \"data\":\"testee\" }").GetJson());
 						
 						client.close();
 					}

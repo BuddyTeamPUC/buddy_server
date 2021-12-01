@@ -1,5 +1,7 @@
 package buddyserver.DB;
 
+import buddyserver.Server.ServerObject;
+
 public class ConnectionSettings {
 	
 	private String driverName;
@@ -8,6 +10,12 @@ public class ConnectionSettings {
 	private int port;
 	private String username;
 	private String pass;
+	
+	public static ConnectionSettings GetDefault() 
+	{
+		return (ServerObject.isBuild) ? new ConnectionSettings("db-buddy.mysql.database.azure.com", "buddy", 3306, "buddyadmin@db-buddy", "GuiJuhMiPe2021") : 
+										new ConnectionSettings("localhost", "buddy", 3306, "root", "Fh$tudi0123");
+	}
 	
 	public ConnectionSettings(String serverName, String dataBaseName, int port, String username, String pass) 
 	{

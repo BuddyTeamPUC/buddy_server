@@ -23,7 +23,7 @@ public class LoginRequest extends BaseRequest {
 		DAO dao = new DAO();
 		try 
 		{
-			dao.Start(new ConnectionSettings("localhost", "buddy", 3306, "root", "Fh$tudi0123"));
+			dao.Start(ConnectionSettings.GetDefault());
 			Estudante estudante = dao.GetEstudante(email, pass);
 			
 			if(estudante == null) 

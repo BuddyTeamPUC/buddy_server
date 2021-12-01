@@ -23,7 +23,7 @@ public class TopicsRequest extends BaseRequest{
 		DAO dao = new DAO();
 		try 
 		{
-			dao.Start(new ConnectionSettings("localhost", "buddy", 3306, "root", "Fh$tudi0123"));
+			dao.Start(ConnectionSettings.GetDefault());
 			
 			Assunto[] assuntos = dao.GetAssuntos(materialId);
 			

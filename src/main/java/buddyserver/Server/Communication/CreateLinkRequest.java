@@ -22,7 +22,7 @@ public class CreateLinkRequest extends BaseRequest {
 	public CommunicationResult ProcessRequest() {
 		DAO dao = new DAO();
 		try {
-			dao.Start(new ConnectionSettings("localhost", "buddy", 3306, "root", "Fh$tudi0123"));
+			dao.Start(ConnectionSettings.GetDefault());
 
 			Materiais_link[] assuntos = dao.GetAssuntosMaterial(assuntoId);
 			int id = (assuntos != null && assuntos.length > 0) ? assuntos.length : 0;

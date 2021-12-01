@@ -28,7 +28,7 @@ public class CreateSubjectRequest extends BaseRequest {
 		DAO dao = new DAO();
 		try 
 		{
-			dao.Start(new ConnectionSettings("localhost", "buddy", 3306, "root", "Fh$tudi0123"));
+			dao.Start(ConnectionSettings.GetDefault());
 			
 			Materia[] materias = dao.GetMaterias();
 			int id = (materias != null && materias.length > 0) ? materias.length : 0;

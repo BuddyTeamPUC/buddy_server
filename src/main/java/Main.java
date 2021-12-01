@@ -1,6 +1,7 @@
 import buddyserver.Server.ServerObject;
 
 public class Main {
+	
 public static void main(String[] args) {
 	
 		System.out.println("Lines:");
@@ -9,7 +10,17 @@ public static void main(String[] args) {
 			System.out.println(args[i]);
 		}
 		
-		ServerObject server = new ServerObject(Integer.parseInt(args[0]));
+		ServerObject server = null;
+		
+		if (ServerObject.isBuild) 
+		{
+			server = new ServerObject(Integer.parseInt(args[0]));
+		}
+		else 
+		{
+			server = new ServerObject(3000);
+		}
+		
 		try {
 			server.Run();
 		}
