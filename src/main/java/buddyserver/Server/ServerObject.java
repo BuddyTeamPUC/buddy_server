@@ -54,7 +54,7 @@ public class ServerObject {
 						
 						System.out.println("Receiving data: " + request.toString());
 						
-						Write(client, new CommunicationResult(true, "end-here", "{ \"data\":\"testee\" }").GetJson());
+						Write(client, new CommunicationResult(true, "end-heere", "{ \"data\":\"testee\" }").GetJson());
 						
 						client.close();
 					}
