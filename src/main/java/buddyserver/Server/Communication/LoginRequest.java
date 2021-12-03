@@ -1,21 +1,24 @@
 package buddyserver.Server.Communication;
 
+import java.security.NoSuchAlgorithmException;
+
 import buddyserver.DB.ConnectionSettings;
 import buddyserver.DB.DAO;
 import buddyserver.DB.entities.Estudante;
 import buddyserver.Server.Communication.Result.CommunicationResult;
+import buddyserver.utils.*;
 
 public class LoginRequest extends BaseRequest {
 	
 	String email;
 	String pass;
 	
-	public LoginRequest(String requestString) 
+	public LoginRequest(String requestString) throws NoSuchAlgorithmException 
 	{
 		super(requestString);
 		String[] infos = requestString.split("\\?")[1].split("&");
 		this.email = infos[0].split("=")[1];
-		this.pass = infos[1].split("=")[1];
+		this.pass =  Hash.Encode(infos[1].split("=")[1]);
 	}
 	
 	public CommunicationResult ProcessRequest() 

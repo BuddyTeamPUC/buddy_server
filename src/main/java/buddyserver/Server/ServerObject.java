@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.security.NoSuchAlgorithmException;
 
 import buddyserver.Server.Communication.*;
 import buddyserver.Server.Communication.Result.*;
@@ -13,7 +14,7 @@ import buddyserver.Server.Communication.Result.*;
 public class ServerObject {
 	int port;
 	
-	public static boolean isBuild = false;
+	public static boolean isBuild = true;
 	
 	public ServerObject(int port) 
 	{
@@ -83,7 +84,7 @@ public class ServerObject {
 		clientOutput.close();
 	}
 	
-	void ProcessRequest(Socket client, String request) throws IOException 
+	void ProcessRequest(Socket client, String request) throws IOException, NoSuchAlgorithmException 
 	{
 		if(request.contains("/register")) 
 		{
@@ -131,6 +132,12 @@ public class ServerObject {
 		{
 			CreateLinkRequest createLinkRequest = new CreateLinkRequest(request);
 			CommunicationResult result = createLinkRequest.ProcessRequest();
+			Write(client, result.GetJson());
+		}
+		else if(request.contains("/addevent")) 
+		{
+			AddEventRequest addEventRequest = new AddEventRequest(request);
+			CommunicationResult result = addEventRequest.ProcessRequest();
 			Write(client, result.GetJson());
 		}
 		else 

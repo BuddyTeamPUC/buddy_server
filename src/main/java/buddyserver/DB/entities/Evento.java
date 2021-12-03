@@ -47,6 +47,11 @@ public class Evento extends BaseEntity {
 	
 	public String Insert() 
 	{
-		return "INSERT (" + id +  "," + nome + "," + data + "," + descricao + ") INTO " + GetTable();
+		return "INSERT INTO "+GetTable()+ " (id, nome, data, descricao) VALUES ("+id+", '"+nome+"', '"+data+"', '"+descricao+"')";
+	}
+	
+	public String GetJson() 
+	{
+		return "{ \"id\": "+id+", \"nome\": \""+nome+"\", \"data\": \""+data+"\", \"desricao\": \""+descricao+"\" }";
 	}
 }

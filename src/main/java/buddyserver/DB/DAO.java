@@ -193,6 +193,35 @@ public class DAO {
 		return assuntos;
 	}
 	
+	public Evento[] GetEventos() 
+	{
+		Evento[] eventos = null;
+		
+		try 
+		{
+			Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			ResultSet rs = st.executeQuery("SELECT * FROM evento");
+			if(rs.next()) 
+			{
+				rs.last();
+				eventos = new Evento[rs.getRow()];
+				rs.beforeFirst();
+				
+				for(int i = 0; rs.next(); i++) 
+				{
+					eventos[i] = new Evento(rs.getInt("id"), rs.getString("nome"), rs.getString("data"), rs.getString("descricao"));
+				}
+			}
+			
+			st.close();
+		}catch(Exception e) 
+		{
+			System.err.println(e.getMessage());
+		}
+		
+		return eventos;
+	}
+	
 	public Materiais_link[] GetAssuntosMaterial(int assuntoId)
 	{
 		Materiais_link[] links = null;

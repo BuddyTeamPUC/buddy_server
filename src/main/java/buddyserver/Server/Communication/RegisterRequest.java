@@ -1,8 +1,11 @@
 package buddyserver.Server.Communication;
 
+import java.security.NoSuchAlgorithmException;
+
 import buddyserver.DB.*;
 import buddyserver.DB.entities.Estudante;
 import buddyserver.Server.Communication.Result.CommunicationResult;
+import buddyserver.utils.*;
 
 public class RegisterRequest extends BaseRequest{
 
@@ -13,14 +16,14 @@ public class RegisterRequest extends BaseRequest{
 	
 	//EXPTECTED REQUEST LAYOUT: /register?name=a&sobrenome=a&email=a&pass=a
 	
-	public RegisterRequest(String requestString) {
+	public RegisterRequest(String requestString) throws NoSuchAlgorithmException {
 		super(requestString);
 		
 		String[] infos = requestString.split("\\?")[1].split("&");
 		name = infos[0].split("=")[1];
 		lastName = infos[1].split("=")[1];
 		email = infos[2].split("=")[1];
-		pass = infos[3].split("=")[1];
+		pass =  Hash.Encode( infos[3].split("=")[1] );
 	}
 	
 	public CommunicationResult ProcessRequest() 
