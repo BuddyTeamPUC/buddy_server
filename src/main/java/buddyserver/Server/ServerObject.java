@@ -78,6 +78,7 @@ public class ServerObject {
 		clientOutput.write(("Content-Type: text/json; charset=utf-8\r\n").getBytes());
 		clientOutput.write(("Content-Length: " + data.getBytes().length + "\r\n").getBytes());
 		clientOutput.write(("Access-Control-Allow-Origin: *\r\n").getBytes());
+		clientOutput.write(("Accept-Charset: utf-8, iso-8859-1;q=0.5 \r\n").getBytes());
 		clientOutput.write(("\r\n").getBytes());
 		clientOutput.write((data+"\r\n").getBytes());
 		clientOutput.flush();

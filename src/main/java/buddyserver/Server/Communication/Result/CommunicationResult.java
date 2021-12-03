@@ -1,5 +1,7 @@
 package buddyserver.Server.Communication.Result;
 
+import buddyserver.utils.HttpRequestStringEncoder;
+
 public class CommunicationResult {
 	
 	boolean status;
@@ -29,6 +31,6 @@ public class CommunicationResult {
 	public String GetJson() 
 	{
 		String fetchedData = !data.isEmpty() ? data : "\"\"";
-		return "{ \"status\": "+status+", \"message\":\""+message+"\", \"data\": "+fetchedData+" }";
+		return "{ \"status\": "+status+", \"message\":\""+message+"\", \"data\": "+ HttpRequestStringEncoder.Encode(fetchedData)+" }";
 	}
 }

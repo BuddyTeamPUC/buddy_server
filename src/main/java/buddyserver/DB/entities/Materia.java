@@ -1,5 +1,8 @@
 package buddyserver.DB.entities;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
 public class Materia extends BaseEntity {
 	
 	String nome;
